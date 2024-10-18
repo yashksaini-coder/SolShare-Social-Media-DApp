@@ -1,0 +1,37 @@
+name: Greet New Contributors
+
+on:
+  issues:
+    types: [opened]
+  pull_request:
+    types: [opened]
+
+jobs:
+  greeting:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Greet contributor
+        uses: actions-ecosystem/action-create-comment@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ github.event.issue.number || github.event.pull_request.number }}
+          body: |
+            🎉 **Welcome @${{ github.event.issue.user.login || github.event.pull_request.user.login }}!** 🎉
+            
+            We're so excited to see your new ${{ github.event_name }}! 🚀 Your contribution is incredibly valuable to making **SolShare** the best decentralized social media platform out there! 💬🌐
+            
+            🛠️ **Next Steps:**
+            - We’ll review your submission as soon as possible. 🔍 
+            - Feel free to ask any questions or engage in discussions here. 💬
+            
+            🌱 **Want to contribute more?**
+            Check out our [open issues](https://github.com/yashksaini-coder/SolShare-Social-Media-DApp/issues) or [documentation](https://github.com/yashksaini-coder/SolShare-Social-Media-DApp/blob/main/README.md) to see where you can help. We'd love to have you involved! 🙌
+
+            Thank you for being a part of the SolShare community! Together, we’re building something amazing. 🔥💡
