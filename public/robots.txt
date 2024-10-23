@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://your-solshare-website.com
+
+# Sitemaps
+Sitemap: https://your-solshare-website.com/sitemap.xml
