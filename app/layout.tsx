@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import GTranslateLoader from "./GTranslateLoader";
+import Script from "next/script";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -61,7 +63,13 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <div className="gtranslate_wrapper">
         {children}
+        
+      </div>
+
+      <GTranslateLoader />
+
       </body>
     </html>
   );
